@@ -29,6 +29,7 @@
 
 | Column           |  Type   | Options     |
 | ---------------- |-------- | ------------|
+| id               | integer | null: false |
 | image            | string  | null: false |
 | name             | string  | null: false |
 | detail           | text    | null: false |
@@ -56,7 +57,7 @@
 ### Association
 
 - belongs_to: user
-- belongs_to: item
+- has_one: item
 
 
 
@@ -74,4 +75,4 @@
 
 ### Association
 
-- belongs_to :purchase
+- has_one :purchase
