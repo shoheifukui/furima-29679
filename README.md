@@ -31,10 +31,13 @@
 | ---------------- |-------- | ------------|
 | image            | string  | null: false |
 | name             | string  | null: false |
-| product          | text    | null: false |
+| detail           | text    | null: false |
 | category         | string  | null: false |
 | status           | string  | null: false |
 | price            | string  | null: false |
+| delivery_fee     | string  | null: false |
+| region           | string  | null: false |
+| delivery_days    | string  | null: false |
 
 ### Association
 
@@ -52,8 +55,8 @@
 
 ### Association
 
-- belongs_to: users
-- has_one: items
+- belongs_to: user
+- belongs_to: item
 
 
 
@@ -61,8 +64,8 @@
 
 | Column        |  Type      |  Options                       |
 |-------------- | ---------- | ------------------------------ |
-| postal_code   | integer    | null: false                    |
-| province      | string     | null: false                    |
+| postal_code   | string     | null: false                    |
+| province      | integer    | null: false                    |
 | region        | string     | null: false                    |
 | address       | string     | null: false, foreign_key: true |
 | building_name | string     |                                | 
