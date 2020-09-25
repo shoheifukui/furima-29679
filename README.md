@@ -51,8 +51,8 @@
 | user_id       | references | null: false, foreign_key: true |
 | product_id    | references | null: false, foreign_key: true |
 | address       | references | null: false, foreign_key: true |
-| building_name | references | null: false, foreign_key: true |
-| phone_number  | references | null: false, foreign_key: true |
+| building_name | string     |                                |
+| phone_number  | string     | null: false, foreign_key: true |
 
 ### Asociation
 
@@ -70,8 +70,8 @@
 | province      | string     | null: false                    |
 | region        | string     | null: false                    |
 | address       | references | null: false, foreign_key: true |
-| building_name | references | null: false, foreign_key: true |
-| phone_number  | references | null: false, foreign_key: true |
+| building_name | string     |                                | 
+| phone_number  | string     | null: false, foreign_key: true |
 
 ### Association
 
