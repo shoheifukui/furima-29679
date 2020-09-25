@@ -39,7 +39,7 @@
 ### Association
 
 - belongs_to :users
-- has_ one : orders, through: :purchases
+- has_ one : orders
 
 
 
@@ -48,13 +48,9 @@
 | Column        |  Type      |  Options                       |
 |-------------- | ---------- | ------------------------------ |
 | id            | integer    | null: false                    |
-| user_id       | references | null: false, foreign_key: true |
 | product_id    | references | null: false, foreign_key: true |
-| address       | references | null: false, foreign_key: true |
-| building_name | string     |                                |
-| phone_number  | string     | null: false, foreign_key: true |
 
-### Asociation
+### Association
 
 - belongs_to: users
 - has_one: items
@@ -65,14 +61,14 @@
 
 | Column        |  Type      |  Options                       |
 |-------------- | ---------- | ------------------------------ |
-| user_id       | references | null: false, foreign_key: true |
 | postal_code   | integer    | null: false                    |
 | province      | string     | null: false                    |
 | region        | string     | null: false                    |
-| address       | references | null: false, foreign_key: true |
+| address       | string     | null: false, foreign_key: true |
 | building_name | string     |                                | 
 | phone_number  | string     | null: false, foreign_key: true |
+| id            | integer    | null: false                    |
 
 ### Association
 
-- belongs_to :purchases
+- belongs_to :purchase
