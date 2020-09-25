@@ -29,12 +29,12 @@
 
 | Column           |  Type   | Options     |
 | ---------------- |-------- | ------------|
-| product_image    | string  | null: false |
-| product_name     | string  | null: false |
-| product_detail   | text    | null: false |
-| product_category | string  | null: false |
-| product_status   | string  | null: false |
-| product_price    | string  | null: false |
+| image            | string  | null: false |
+| name             | string  | null: false |
+| product          | text    | null: false |
+| category         | string  | null: false |
+| status           | string  | null: false |
+| price            | string  | null: false |
 
 ### Association
 
