@@ -42,7 +42,7 @@
 ### Association
 
 - belongs_to :user
-
+- has_one: purchases
 
 
 ## purchases テーブル
@@ -68,9 +68,9 @@
 | postal_code   | string     | null: false                    |
 | province_id   | integer    | null: false                    |
 | region        | string     | null: false                    |
-| address       | string     | null: false, foreign_key: true |
+| address       | string     | null: false                    |
 | building_name | string     |                                | 
-| phone_number  | string     | null: false, foreign_key: true |
+| phone_number  | string     | null: false                    |
 
 ### Association
 
