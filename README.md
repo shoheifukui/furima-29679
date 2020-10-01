@@ -42,7 +42,6 @@
 ### Association
 
 - belongs_to :user
-- has_ one : order
 
 
 
