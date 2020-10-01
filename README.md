@@ -29,21 +29,19 @@
 
 | Column           |  Type   | Options     |
 | ---------------- |-------- | ------------|
-| id               | integer | null: false |
-| image            | string  | null: false |
 | name             | string  | null: false |
 | detail           | text    | null: false |
-| category         | string  | null: false |
-| status           | string  | null: false |
+| category_id      | integer | null: false |
+| status_id        | integer | null: false |
 | price            | string  | null: false |
-| delivery_fee     | string  | null: false |
-| region           | string  | null: false |
-| delivery_days    | string  | null: false |
+| delivery_fee_id  | integer | null: false |
+| region_id        | integer | null: false |
+| delivery_days_id | integer | null: false |
 
 ### Association
 
 - belongs_to :users
-- has_ one : orders
+- has_ one : order
 
 
 
@@ -51,13 +49,14 @@
 
 | Column        |  Type      |  Options                       |
 |-------------- | ---------- | ------------------------------ |
-| id            | integer    | null: false                    |
+| user          | references | null: false, foreign_key: true | 
 | product_id    | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to: user
-- has_one: item
+- belongs_to: item
+- has_one :order
 
 
 
@@ -65,14 +64,14 @@
 
 | Column        |  Type      |  Options                       |
 |-------------- | ---------- | ------------------------------ |
+| purchase      | references | null: false, foreign_key: true |
 | postal_code   | string     | null: false                    |
-| province      | integer    | null: false                    |
+| province_id   | integer    | null: false                    |
 | region        | string     | null: false                    |
 | address       | string     | null: false, foreign_key: true |
 | building_name | string     |                                | 
 | phone_number  | string     | null: false, foreign_key: true |
-| id            | integer    | null: false                    |
 
 ### Association
 
-- has_one :purchase
+- belongs_to :purchase
