@@ -20,4 +20,7 @@ class User < ApplicationRecord
    validates :family_name_kana, format: { with: VALID_FULL_WIDTH_KATAKANA_CHARACTOR_REGEX, message: "Full-width katakana characters"}
    validates :first_name_kana, format: { with: VALID_FULL_WIDTH_KATAKANA_CHARACTOR_REGEX, message: " Full-width katakana characters"}
    end
+
+   has_many :items
+
 end

@@ -1,8 +1,18 @@
 class ItemsController < ApplicationController
-  def destroy
+  
+  def index
+  end
+    
+  def new
+      @items = Item.new
   end
   
-  def new
-      @items = Item.all
+  def destroy
   end
+
+  def create
+  end
+
+  private
+
 end

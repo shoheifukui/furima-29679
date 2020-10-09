@@ -3,7 +3,7 @@
 
 #テーブル設計
 
-## users　テーブル
+## users テーブル
 
 | Column                |  Type   |  Options    |
 | --------------------- | ------- | ----------- |
@@ -19,13 +19,13 @@
 
 ### Association
 
-- has many : items
-- has many : purchases
+- has_many : items
+- has_many : purchases
 
 
 
 
-## items　テーブル
+## items テーブル
 
 | Column           |  Type      | Options                        |
 | ---------------- |----------- | ------------------------------ |
@@ -60,7 +60,7 @@
 
 
 
-## Orders　テーブル
+## Orders テーブル
 
 | Column        |  Type      |  Options                       |
 |-------------- | ---------- | ------------------------------ |
