@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  has_many :items
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, uniqueness: true, length: {minimum: 6}, format: { with: VALID_EMAIL_REGEX}
   VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
@@ -20,7 +22,5 @@ class User < ApplicationRecord
    validates :family_name_kana, format: { with: VALID_FULL_WIDTH_KATAKANA_CHARACTOR_REGEX, message: "Full-width katakana characters"}
    validates :first_name_kana, format: { with: VALID_FULL_WIDTH_KATAKANA_CHARACTOR_REGEX, message: " Full-width katakana characters"}
    end
-
-   has_many :items
 
 end

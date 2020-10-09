@@ -1,4 +1,7 @@
 class Item < ApplicationRecord
+  
+  belongs_to :user
+  has_one_attached :image
 
   with_options presence: true do
     validates :name, length: {maximum: 40}
@@ -11,7 +14,4 @@ class Item < ApplicationRecord
     validates :delivery_days_id
     validates :user
   end
-
-  belongs_to :user
-
 end
