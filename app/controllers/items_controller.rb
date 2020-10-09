@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-    def new
+  def new
       @items = Items.all
-    end
+  end
 end
