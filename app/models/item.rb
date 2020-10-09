@@ -13,5 +13,6 @@ class Item < ApplicationRecord
     validates :region_id
     validates :delivery_days_id
     validates :user
+    validates :image
   end
 end
