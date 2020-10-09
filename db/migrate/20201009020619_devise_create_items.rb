@@ -4,8 +4,15 @@ class DeviseCreateItems < ActiveRecord::Migration[6.0]
   def change
     create_table :items do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string      :name,               null: false
+      t.text        :detail,             null: false
+      t.integer     :category_id,        null: false
+      t.integer     :status_id,          null: false
+      t.integer     :price,              null: false
+      t.integer     :delivery_fee_id,    null: false
+      t.integer     :region_id,          null: false
+      t.integer     :delivery_days_id,   null: false
+      t.references  :user,               null: false, foreign_key: true 
 
       ## Recoverable
       t.string   :reset_password_token
