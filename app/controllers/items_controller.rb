@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   
   def new
-      @items = Item.new
+      @item = Item.new
   end
 
   def create
@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :detail, :category_id, :status_id, :price, :delivery_fee_id, :prefecture_id, :delivery_days_id, :user)
+    params.require(:item).permit(:name, :detail, :category_id, :status_id, :price, :delivery_fee_id, :prefecture_id, :delivery_days_id, :user, :image)
   end
   
 end
