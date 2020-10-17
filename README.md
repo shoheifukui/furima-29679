@@ -3,7 +3,7 @@
 
 #テーブル設計
 
-## users　テーブル
+## users テーブル
 
 | Column                |  Type   |  Options    |
 | --------------------- | ------- | ----------- |
@@ -19,13 +19,13 @@
 
 ### Association
 
-- has many : items
-- has many : purchases
+- has_many : items
+- has_many : purchases
 
 
 
 
-## items　テーブル
+## items テーブル
 
 | Column           |  Type      | Options                        |
 | ---------------- |----------- | ------------------------------ |
@@ -35,7 +35,7 @@
 | status_id        | integer    | null: false                    |
 | price            | integer    | null: false                    |
 | delivery_fee_id  | integer    | null: false                    |
-| region_id        | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
 | delivery_days_id | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |          
 
@@ -60,7 +60,7 @@
 
 
 
-## Orders　テーブル
+## Orders テーブル
 
 | Column        |  Type      |  Options                       |
 |-------------- | ---------- | ------------------------------ |
