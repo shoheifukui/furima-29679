@@ -3,12 +3,13 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
+
   with_options presence: true do
     validates :image
     validates :name, length: {maximum: 40}
     validates :detail, length: {maximum: 1000}
-    validates :price, format: {with: /\A[0-9]+\z/, message: "Half-width number"}, numericality: {:greater_than_or_equal_to => 300, :less_than_or_equal_to => 9999999, message: "Out of setting range"}
     validates :user
+    validates :price, numericality: {:greater_than_or_equal_to => 300, :less_than_or_equal_to => 9999999, message: " is out of setting range. Price must be Half-width number"}
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
