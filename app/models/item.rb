@@ -22,6 +22,6 @@ class Item < ApplicationRecord
     validates :status_id, inclusion: { in: 1..6, message: 'Select' }
     validates :delivery_fee_id, inclusion: { in: 1..2, message: 'Select' }
     validates :prefecture_id, inclusion: { in: 1..47, message: 'Select' }
-    validates :delivery_days_id, inclusion: { in: 1..3, message: 'Select' }
+    validates :delivery_day_id, inclusion: { in: 1..3, message: 'Select' }
   end
 end

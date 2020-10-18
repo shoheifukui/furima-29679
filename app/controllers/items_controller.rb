@@ -3,6 +3,10 @@ class ItemsController < ApplicationController
     @item = Item.all.order("created_at DESC")
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
   def new
     @item = Item.new
   end
@@ -19,6 +23,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :detail, :category_id, :status_id, :price, :delivery_fee_id, :prefecture_id, :delivery_days_id, :image).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :detail, :category_id, :status_id, :price, :delivery_fee_id, :prefecture_id, :delivery_day_id, :image).merge(user_id: current_user.id)
   end
 end
