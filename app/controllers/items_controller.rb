@@ -33,7 +33,6 @@ before_action :move_to_index, except: [:index, :show, :new, :create]
     else
       render :edit
     end
-
   end
 
   private
