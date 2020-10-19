@@ -43,23 +43,6 @@ class ItemsController < ApplicationController
       redirect_to root_path
       end
     end
-<<<<<<< HEAD
-  
-    private
-  
-    def item_params
-      params.require(:item).permit(:name, :detail, :category_id, :status_id, :price, :delivery_fee_id, :prefecture_id, :delivery_day_id, :image).merge(user_id: current_user.id)
-    end
-  
-    def set_item
-      @item = Item.find(params[:id])
-    end
-  
-    def move_to_index
-      unless user_signed_in? && current_user.id == @item.user_id 
-      redirect_to root_path
-      end
-=======
   end
 
   private
@@ -75,7 +58,6 @@ class ItemsController < ApplicationController
   def move_to_index
     unless user_signed_in? && current_user.id == @item.user_id 
     redirect_to root_path
->>>>>>> parent of 202fa16... Revert "モデル実装/バリデーション設定"
     end
   end
   
