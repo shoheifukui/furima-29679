@@ -45,7 +45,7 @@
 - has_one: purchase
 
 
-## purchases テーブル
+## Transaction テーブル
 
 | Column        |  Type      |  Options                       |
 |-------------- | ---------- | ------------------------------ |
