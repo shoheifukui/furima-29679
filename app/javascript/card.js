@@ -1,6 +1,6 @@
 if (document.URL.match( /orders/ )) {
 const pay = () => {
-  Payjp.setPublicKey("pk_test_1c874739ae085b940a3f5f7c");
+  Payjp.setPublicKey("");
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) =>{
     e.preventDefault();
@@ -9,10 +9,10 @@ const pay = () => {
     const formData = new FormData(formResult);
 
     const card = {
-      number: formData.get("number"),
-      cvc: formData.get("cvc"),
-      exp_month: formData.get("exp_month"),
-      exp_year: `20${formData.get("exp_year")}`,
+      number: formData.get("purchase[number]"),
+      cvc: formData.get("purchase[cvc]"),
+      exp_month: formData.get("purchase[exp_month]"),
+      exp_year: `20${formData.get("purchase[exp_year]")}`,
     }; 
 
     Payjp.createToken(card, (status, response) => {   
