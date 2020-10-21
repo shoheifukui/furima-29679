@@ -1,16 +1,18 @@
 class OrdersController < ApplicationController
-  before_action :transaction_params, only: [:index, :create]
+  before_action :purchase_history_params, only: [:create]
+  before_action :move_to_sign_in, except: [:index, :create]
+  before_action :move_to_index, except: [:index, :create]
 
   def index
-    @purchase = Purchase.new
+    @purchase_history = Purchase.new
   end
  
   def create
-    @purchase = Purchase.new(purchase_params)
+    @purchase_history = Purchase.new(purchase_history_params)
     @item = Item.find(params[:item_id])
-    if @purchase.valid?
+    if @purchase_history.valid?
       pay_item
-      @purchase.save
+      @purchase_history.save
       return redirect_to root_path
     else
       render :index
@@ -19,7 +21,7 @@ class OrdersController < ApplicationController
 
   private
 
-  def purchase_params
+  def purchase_history_params
     params.require(:purchase).permit(:postal_code, :prefecture_id, :city, :address, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
@@ -31,8 +33,20 @@ class OrdersController < ApplicationController
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,
-      card: purchase_params[:token],
+      card: purchase_history_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def move_to_sign_in
+    unless user_signed_in? && current_user.id == @item.user_id 
+    redirect_to new_user_session
+    end
+  end
+
+  def move_to_index
+    unless user_signed_in? && current_user.id == @item.user_id 
+    redirect_to  root_path
+    end
   end
 end

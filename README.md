@@ -20,7 +20,7 @@
 ### Association
 
 - has_many : items
-- has_many : purchases
+- has_many : purchase_histories
 
 
 
@@ -42,10 +42,10 @@
 ### Association
 
 - belongs_to :user
-- has_one: purchase
+- has_one :purchase_history
 
 
-## Transaction テーブル
+## Purchase_History テーブル
 
 | Column        |  Type      |  Options                       |
 |-------------- | ---------- | ------------------------------ |
@@ -54,24 +54,24 @@
 
 ### Association
 
-- belongs_to: user
-- belongs_to: item
+- belongs_to :user
+- belongs_to :item
 - has_one :order
 
 
 
 ## Orders テーブル
 
-| Column         |  Type      |  Options                       |
-|--------------- | ---------- | ------------------------------ |
-| transaction_id | references | null: false, foreign_key: true |
-| postal_code    | string     | null: false                    |
-| prefecture_id  | integer    | null: false                    |
-| city           | string     | null: false                    |
-| address        | string     | null: false                    |
-| building_name  | string     |                                | 
-| phone_number   | string     | null: false                    |
+| Column              |  Type      |  Options                       |
+|-------------------- | ---------- | ------------------------------ |
+| purchase_history_id | references | null: false, foreign_key: true |
+| postal_code         | integer    | null: false                    |
+| prefecture_id       | integer    | null: false                    |
+| city                | string     | null: false                    |
+| address             | string     | null: false                    |
+| building_name       | string     |                                | 
+| phone_number        | string     | null: false                    |
 
 ### Association
 
-- belongs_to :transaction
+- belongs_to :purchase_history
