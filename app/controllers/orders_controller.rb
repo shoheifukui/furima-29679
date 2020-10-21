@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   before_action :move_to_index, except: [:index, :create]
 
   def index
+    @item = Item.find(params[:item_id])
     @purchase_history = Purchase.new
   end
  
