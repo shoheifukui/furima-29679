@@ -7,14 +7,14 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
     @purchase_history = Purchase.new
   end
- 
+
   def create
     @purchase_history = Purchase.new(purchase_history_params)
     @item = Item.find(params[:item_id])
     if @purchase_history.valid?
       pay_item
       @purchase_history.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       render :index
     end
@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: purchase_history_params[:token],
@@ -40,14 +40,10 @@ class OrdersController < ApplicationController
   end
 
   def move_to_sign_in
-    unless user_signed_in? && current_user.id == @item.user_id 
-    redirect_to new_user_session
-    end
+    redirect_to new_user_session unless user_signed_in? && current_user.id == @item.user_id
   end
 
   def move_to_index
-    unless user_signed_in? && current_user.id == @item.user_id 
-    redirect_to  root_path
-    end
+    redirect_to root_path unless user_signed_in? && current_user.id == @item.user_id
   end
 end

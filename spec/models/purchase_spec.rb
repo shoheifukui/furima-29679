@@ -10,17 +10,17 @@ RSpec.describe Purchase, type: :model do
       it 'クレジットカード番号、有効期限の年月、セキュリティコード、postal_code,prefecture_id,city,address,phone_numberが入力されていれば購入できる' do
         expect(@purchase).to be_valid
       end
-      it '郵便番号を３桁と4桁の値の間に-を入力すれば購入できる' do 
-        @purchase.postal_code = "111-1111"
+      it '郵便番号を３桁と4桁の値の間に-を入力すれば購入できる' do
+        @purchase.postal_code = '111-1111'
         expect(@purchase).to be_valid
       end
       it '電話番号が11桁以内なら購入できる' do
-        @purchase.phone_number = "12345678911"
+        @purchase.phone_number = '12345678911'
         expect(@purchase).to be_valid
       end
     end
 
-    context '商品購入がうまくいかないとき' do 
+    context '商品購入がうまくいかないとき' do
       it 'tokenが空だと購入できない' do
         @purchase.token = nil
         @purchase.valid?
@@ -29,12 +29,12 @@ RSpec.describe Purchase, type: :model do
       it 'postal_codeが空だと購入できない' do
         @purchase.postal_code = nil
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Postal code can't be blank", "Postal code is invalid")
+        expect(@purchase.errors.full_messages).to include("Postal code can't be blank", 'Postal code is invalid')
       end
       it 'prefecture_idが空だと購入できない' do
         @purchase.prefecture_id = nil
         @purchase.valid?
-        expect(@purchase.errors.full_messages).to include("Prefecture is not a number")
+        expect(@purchase.errors.full_messages).to include('Prefecture is not a number')
       end
       it 'cityが空だと購入できない' do
         @purchase.city = nil

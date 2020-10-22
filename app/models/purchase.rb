@@ -1,9 +1,9 @@
-class Purchase 
+class Purchase
   include ActiveModel::Model
   attr_accessor :user_id, :item_id, :token, :postal_code, :prefecture_id, :city, :address, :building_name, :phone_number
 
   with_options presence: true do
-    VALID_POSTAL_CODE_REGEX = /\A\d{3}[-]\d{4}\z/
+    VALID_POSTAL_CODE_REGEX = /\A\d{3}[-]\d{4}\z/.freeze
     validates :postal_code, format: { with: VALID_POSTAL_CODE_REGEX }
     validates :city
     validates :address
