@@ -5,10 +5,10 @@ class OrdersController < ApplicationController
   before_action :order_params, only: [:index, :create]
 
   def index
-    if @item.purchase_history != nil
+    if @item.user == current_user || @item.order.present?
       redirect_to root_path
     else
-    @purchase_history = Purchase.new
+      @purchase_history = Purchase.new
     end
   end
 
