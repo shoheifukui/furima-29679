@@ -14,7 +14,7 @@ RSpec.describe Purchase, type: :model do
         @purchase.postal_code = '111-1111'
         expect(@purchase).to be_valid
       end
-      it '電話番号が11桁以内なら購入できる' do
+      it '電話番号はハイフンは不要で、11桁以内でなら購入できる' do
         @purchase.phone_number = '12345678911'
         expect(@purchase).to be_valid
       end
@@ -30,6 +30,11 @@ RSpec.describe Purchase, type: :model do
         @purchase.postal_code = nil
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include("Postal code can't be blank", 'Postal code is invalid')
+      end
+      it 'postal_codeにハイフンがないと購入できない' do
+        @purchase.postal_code = '1234567'
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include("Postal code is invalid")
       end
       it 'prefecture_idが空だと購入できない' do
         @purchase.prefecture_id = nil
@@ -50,6 +55,16 @@ RSpec.describe Purchase, type: :model do
         @purchase.phone_number = nil
         @purchase.valid?
         expect(@purchase.errors.full_messages).to include("Phone number can't be blank")
+      end
+      it 'phone_numberは11桁以上だと購入できない' do
+        @purchase.phone_number = "1234567890111"
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+      end
+      it 'phone_numberは11桁以内でも-が入っていると購入できない' do
+        @purchase.phone_number = "123-4567-8900"
+        @purchase.valid?
+        expect(@purchase.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
       end
     end
   end
