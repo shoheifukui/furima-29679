@@ -1,10 +1,9 @@
 class OrdersController < ApplicationController
-  before_action :purchase_history_params, only: [:create]
-  before_action :move_to_sign_in, except: [:index, :create]
+  before_action :authenticate_user!
   before_action :order_params, only: [:index, :create]
 
   def index
-    if user_signed_in? && current_user.id == @item.user_id
+    if current_user.id == @item.user.id
       redirect_to root_path
     else
       @purchase_history = Purchase.new
@@ -35,10 +34,6 @@ class OrdersController < ApplicationController
       card: purchase_history_params[:token],
       currency: 'jpy'
     )
-  end
-
-  def move_to_sign_in
-    redirect_to new_user_session unless user_signed_in?
   end
 
   def order_params
