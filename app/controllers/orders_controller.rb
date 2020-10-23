@@ -1,11 +1,10 @@
 class OrdersController < ApplicationController
   before_action :purchase_history_params, only: [:create]
   before_action :move_to_sign_in, except: [:index, :create]
-  before_action :move_to_index, except: [:index, :create]
   before_action :order_params, only: [:index, :create]
 
   def index
-    if @item.user == current_user || @item.order.present?
+    if user_signed_in? && current_user.id == @item.user_id
       redirect_to root_path
     else
       @purchase_history = Purchase.new
@@ -40,10 +39,6 @@ class OrdersController < ApplicationController
 
   def move_to_sign_in
     redirect_to new_user_session unless user_signed_in?
-  end
-
-  def move_to_index
-    redirect_to root_path unless user_signed_in? && current_user.id == @item.user_id
   end
 
   def order_params
